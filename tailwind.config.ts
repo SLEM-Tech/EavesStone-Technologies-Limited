@@ -30,11 +30,11 @@ const config: Config = {
 				dark: "#000000",
 
 				primary: {
-					100: "#003EB0", // Matches brand.blue for HeroUI consistency
-					200: "#003087",
+					100: "#029FAE", // Matches brand.blue for HeroUI consistency
+					200: "#028a96",
 					300: "#0F1111", // Matches brand.navy
 					400: "#5855D6", // The Royal Purple used for Section Headers
-					DEFAULT: "#003EB0",
+					DEFAULT: "#029FAE",
 				},
 
 				gray: {

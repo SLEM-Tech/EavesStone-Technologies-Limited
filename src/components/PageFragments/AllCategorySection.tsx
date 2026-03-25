@@ -170,7 +170,7 @@ const AllCategorySection = () => {
 							>
 								<Link
 									href='/shop'
-									className='inline-flex items-center gap-3 bg-[#029FAE] hover:bg-[#028a96] text-white px-8 py-4 rounded-lg font-bold transition-all hover:gap-5 group'
+									className='inline-flex items-center gap-3 bg-primary-100 hover:bg-primary-200 text-white px-8 py-4 rounded-lg font-bold transition-all hover:gap-5 group'
 								>
 									Shop Now
 									<FiArrowRight size={20} />
@@ -210,10 +210,10 @@ const AllCategorySection = () => {
 					</div>
 
 					{/* 2. Side Navigation Arrows */}
-					<button className='hidden lg:flex absolute left-4 top-1/2 -translate-y-1/2 size-12 rounded-full bg-white border border-gray-100 items-center justify-center text-gray-400 hover:text-[#029FAE] hover:shadow-lg transition-all z-20'>
+					<button className='hidden lg:flex absolute left-4 top-1/2 -translate-y-1/2 size-12 rounded-full bg-white border border-gray-100 items-center justify-center text-gray-400 hover:text-primary-100 hover:shadow-lg transition-all z-20'>
 						<FiArrowLeft size={20} />
 					</button>
-					<button className='hidden lg:flex absolute right-4 top-1/2 -translate-y-1/2 size-12 rounded-full bg-white border border-gray-100 items-center justify-center text-gray-400 hover:text-[#029FAE] hover:shadow-lg transition-all z-20'>
+					<button className='hidden lg:flex absolute right-4 top-1/2 -translate-y-1/2 size-12 rounded-full bg-white border border-gray-100 items-center justify-center text-gray-400 hover:text-primary-100 hover:shadow-lg transition-all z-20'>
 						<FiArrowRight size={20} />
 					</button>
 
