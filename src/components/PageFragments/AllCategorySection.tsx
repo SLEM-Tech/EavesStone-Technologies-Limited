@@ -191,20 +191,6 @@ const AllCategorySection = () => {
 									alt='Premium PC Hardware'
 									className='w-full h-full object-contain drop-shadow-2xl'
 								/>
-
-								{/* Floating Discount Badge */}
-								<motion.div
-									animate={{ y: [0, -10, 0] }}
-									transition={{ repeat: Infinity, duration: 4 }}
-									className='absolute -top-4 right-0 lg:right-10 bg-white size-24 lg:size-28 rounded-full shadow-xl flex flex-col items-center justify-center p-2 border-2 border-[#F0F2F3]'
-								>
-									<span className='text-2xl lg:text-3xl font-black text-[#F05C52]'>
-										54%
-									</span>
-									<span className='text-[10px] font-bold text-gray-400 uppercase tracking-widest'>
-										Discount
-									</span>
-								</motion.div>
 							</motion.div>
 						</div>
 					</div>
