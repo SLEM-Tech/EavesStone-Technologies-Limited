@@ -10,6 +10,15 @@ import Link from "next/link";
 import { convertToSlug, convertToSlug2 } from "@constants";
 import { useEncryptionHelper } from "../EncryptedData";
 import { useDispatch } from "react-redux";
+import { motion } from "framer-motion";
+import {
+	FiArrowRight,
+	FiArrowLeft,
+	FiTruck,
+	FiShield,
+	FiClock,
+	FiTag,
+} from "react-icons/fi";
 import { updateCategorySlugId } from "../config/features/subCategoryId";
 import { useRouter } from "next/navigation";
 import { heroBg, heroImage, heroImage2, heroImage3 } from "@public/images";
@@ -125,30 +134,137 @@ const AllCategorySection = () => {
 	return (
 		<>
 			{/* Hero Concept inspired by the image */}
-			<div className='relative w-full h-[80vh] sm:h-screen overflow-hidden'>
-				{/* The Background Image */}
-				<Picture
-					src={heroBg}
-					alt='Gaming Setup'
-					className='w-full h-full object-cover scale-105'
-				/>
-				{/* Dark Gradient Overlay for Readability */}
-				<div className='absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent' />
+			<section className='relative w-full bg-white font-poppins pt-24 lg:pt-32 pb-10 overflow-hidden'>
+				<div className='max-w-[1440px] mx-auto px-6 lg:px-12 relative'>
+					{/* 1. Main Hero Card */}
+					<div className='bg-[#F0F2F3] rounded-bl-[80px] rounded-br-[20px] rounded-tl-[20px] rounded-tr-[20px] min-h-[500px] lg:min-h-[700px] flex flex-col lg:flex-row items-center relative overflow-hidden px-8 lg:px-20 py-12 lg:py-0'>
+						{/* Decorative Large Circle Background */}
+						<div className='absolute -right-20 -top-20 size-[600px] lg:size-[800px] bg-white/40 rounded-full blur-3xl pointer-events-none' />
+						<div className='absolute right-0 top-1/2 -translate-y-1/2 size-[400px] lg:size-[650px] bg-white rounded-full hidden lg:block' />
 
-				{/* Content Overlay */}
-				<div className='absolute inset-0 flex flex-col justify-center pt-20 sm:pt-0 px-8 lg:px-20 max-w-5xl space-y-6'>
-					<h1 className='text-3xl lg:text-6xl font-black text-center sm:text-start text-white leading-tight tracking-tighter uppercase'>
-						Powering Your Digital <br />
-						<span className='text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500'>
-							World, <br /> Piece by Piece.
-						</span>
-					</h1>
-					<p className='text-gray-300 text-center sm:text-start text-base lg:text-2xl max-w-xl font-medium leading-relaxed'>
-						From essential components to premium accessories, we supply the
-						tools that keep your tech running at its best.
-					</p>
+						{/* Text Content */}
+						<div className='w-full lg:w-1/2 z-10 space-y-6 text-center lg:text-left'>
+							<motion.p
+								initial={{ opacity: 0, y: 10 }}
+								animate={{ opacity: 1, y: 0 }}
+								className='text-[12px] lg:text-sm font-medium uppercase tracking-[0.3em] text-[#272343]'
+							>
+								Welcome to Quality
+							</motion.p>
+
+							<motion.h1
+								initial={{ opacity: 0, y: 20 }}
+								animate={{ opacity: 1, y: 0 }}
+								transition={{ delay: 0.1 }}
+								className='text-4xl lg:text-[72px] font-black text-[#272343] leading-[1.1] tracking-tight'
+							>
+								Best Accessories <br className='hidden lg:block' />
+								For Your Computer.
+							</motion.h1>
+
+							<motion.div
+								initial={{ opacity: 0, y: 20 }}
+								animate={{ opacity: 1, y: 0 }}
+								transition={{ delay: 0.2 }}
+								className='pt-4'
+							>
+								<Link
+									href='/shop'
+									className='inline-flex items-center gap-3 bg-[#029FAE] hover:bg-[#028a96] text-white px-8 py-4 rounded-lg font-bold transition-all hover:gap-5 group'
+								>
+									Shop Now
+									<FiArrowRight size={20} />
+								</Link>
+							</motion.div>
+						</div>
+
+						{/* Image Section */}
+						<div className='w-full lg:w-1/2 relative mt-12 lg:mt-0 flex justify-center lg:justify-end z-10'>
+							<motion.div
+								initial={{ opacity: 0, scale: 0.8 }}
+								animate={{ opacity: 1, scale: 1 }}
+								transition={{ duration: 0.8 }}
+								className='relative w-full max-w-[500px] aspect-square'
+							>
+								<Picture
+									src={heroBg}
+									alt='Premium PC Hardware'
+									className='w-full h-full object-contain drop-shadow-2xl'
+								/>
+
+								{/* Floating Discount Badge */}
+								<motion.div
+									animate={{ y: [0, -10, 0] }}
+									transition={{ repeat: Infinity, duration: 4 }}
+									className='absolute -top-4 right-0 lg:right-10 bg-white size-24 lg:size-28 rounded-full shadow-xl flex flex-col items-center justify-center p-2 border-2 border-[#F0F2F3]'
+								>
+									<span className='text-2xl lg:text-3xl font-black text-[#F05C52]'>
+										54%
+									</span>
+									<span className='text-[10px] font-bold text-gray-400 uppercase tracking-widest'>
+										Discount
+									</span>
+								</motion.div>
+							</motion.div>
+						</div>
+					</div>
+
+					{/* 2. Side Navigation Arrows */}
+					<button className='hidden lg:flex absolute left-4 top-1/2 -translate-y-1/2 size-12 rounded-full bg-white border border-gray-100 items-center justify-center text-gray-400 hover:text-[#029FAE] hover:shadow-lg transition-all z-20'>
+						<FiArrowLeft size={20} />
+					</button>
+					<button className='hidden lg:flex absolute right-4 top-1/2 -translate-y-1/2 size-12 rounded-full bg-white border border-gray-100 items-center justify-center text-gray-400 hover:text-[#029FAE] hover:shadow-lg transition-all z-20'>
+						<FiArrowRight size={20} />
+					</button>
+
+					{/* 3. Slider Dots */}
+					<div className='flex justify-center gap-2 mt-8'>
+						<div className='size-2.5 rounded-full bg-gray-200' />
+						<div className='size-2.5 rounded-full bg-[#272343]' />
+						<div className='size-2.5 rounded-full bg-gray-200' />
+					</div>
 				</div>
-			</div>
+
+				{/* 4. Bottom Feature Bar */}
+				<div className='max-w-[1256px] mx-auto mt-12 px-6'>
+					<div className='bg-white rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.05)] border border-gray-50 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 divide-y md:divide-y-0 md:divide-x divide-gray-100'>
+						{[
+							{
+								icon: <FiTag />,
+								title: "Discount",
+								sub: "Every week new sales",
+							},
+							{
+								icon: <FiTruck />,
+								title: "Free Delivery",
+								sub: "100% Free for all orders",
+							},
+							{
+								icon: <FiClock />,
+								title: "Great Support 24/7",
+								sub: "We care your experiences",
+							},
+							{
+								icon: <FiShield />,
+								title: "Secure Payment",
+								sub: "100% Secure Payment Method",
+							},
+						].map((item, i) => (
+							<div key={i} className='flex items-center gap-4 p-8'>
+								<div className='text-3xl text-gray-800'>{item.icon}</div>
+								<div>
+									<h4 className='text-sm font-bold text-[#272343]'>
+										{item.title}
+									</h4>
+									<p className='text-xs text-gray-400 font-medium'>
+										{item.sub}
+									</p>
+								</div>
+							</div>
+						))}
+					</div>
+				</div>
+			</section>
 			{/* Category Section Styling Idea */}
 			<div className='grid grid-cols-2 lg:grid-cols-5 mx-auto max-w-[1256px] mt-4 gap-6 p-2 lg:p-0'>
 				{Categories?.slice(0, 5).map((cat) => {
