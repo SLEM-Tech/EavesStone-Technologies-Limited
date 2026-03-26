@@ -13,7 +13,7 @@ import {
 	useGetGeneralInfoQuery,
 	useGetUserAccountQuery,
 } from "../config/features/api";
-import { addRequestPayLoad } from "@constants";
+import { addRequestPayLoad, CompanyName } from "@constants";
 import FormToast from "../Reusables/Toast/SigninToast";
 import { ClipLoader } from "react-spinners";
 import { jwtDecode } from "jwt-decode";
@@ -306,7 +306,7 @@ const CostCalculationSection = () => {
 									>
 										terms & conditions
 									</span>{" "}
-									of Nestora Digital Innovations
+									of {CompanyName}
 								</span>
 							</label>
 						</div>

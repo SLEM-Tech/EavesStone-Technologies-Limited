@@ -1,5 +1,5 @@
 -- ============================================================
--- NESTORA E-Commerce PostgreSQL Schema
+-- E-Commerce PostgreSQL Schema
 -- Replaces WooCommerce as the data source
 -- All table names use the "eavesStone_" prefix (matches TABLE_PREFIX in .env)
 -- ============================================================

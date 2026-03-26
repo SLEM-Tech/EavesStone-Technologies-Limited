@@ -1,4 +1,5 @@
 "use client";
+import { CompanyName } from "@constants";
 import React from "react";
 
 const DeliveryReturn = () => {
@@ -10,13 +11,10 @@ const DeliveryReturn = () => {
 					Logistics & Fulfillment Policy
 				</h3>
 				<p className='text-sm md:text-base leading-relaxed max-w-4xl'>
-					At{" "}
-					<span className='font-bold text-slate-900'>
-						Nestora Digital Innovations
-					</span>
-					, we prioritize the integrity of your cargo. From international
-					arrival to last-mile delivery, we utilize a strictly monitored courier
-					network to ensure your procurement reaches you in pristine condition.
+					At <span className='font-bold text-slate-900'>{CompanyName}</span>, we
+					prioritize the integrity of your cargo. From international arrival to
+					last-mile delivery, we utilize a strictly monitored courier network to
+					ensure your procurement reaches you in pristine condition.
 				</p>
 			</div>
 
@@ -132,8 +130,8 @@ const DeliveryReturn = () => {
 					<p>
 						•{" "}
 						<span className='font-bold text-slate-800'>Transfer of Risk:</span>{" "}
-						Nestora Digital Innovations bears no responsibility for items signed
-						for by unauthorized third parties.
+						{CompanyName} bears no responsibility for items signed for by
+						unauthorized third parties.
 					</p>
 					<p>
 						•{" "}
@@ -148,7 +146,7 @@ const DeliveryReturn = () => {
 					</p>
 				</div>
 
-				<div className='pt-4 flex items-center gap-3 text-xs font-bold text-primary-100'>
+				{/* <div className='pt-4 flex items-center gap-3 text-xs font-bold text-primary-100'>
 					Queries:{" "}
 					<a
 						href='mailto:IgweBlessing@nestora.com.ng'
@@ -156,7 +154,7 @@ const DeliveryReturn = () => {
 					>
 						IgweBlessing@nestora.com.ng
 					</a>
-				</div>
+				</div> */}
 			</div>
 
 			{/* --- RETURN POLICY --- */}

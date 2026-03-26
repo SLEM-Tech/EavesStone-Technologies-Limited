@@ -17,7 +17,7 @@ const config: Config = {
 				transparent: "transparent",
 				current: "currentColor",
 
-				/* ========== Nestora Brand Foundation ========== */
+				/* ========== Brand Foundation ========== */
 				brand: {
 					navy: "#0F1111", // Dark Hero background from image
 					blue: "#003EB0", // Vivid blue from 'Buy' buttons and badges

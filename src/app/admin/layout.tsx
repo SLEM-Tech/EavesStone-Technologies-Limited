@@ -1,8 +1,12 @@
 import type { Metadata } from "next";
 import AdminProvider from "./_components/AdminProvider";
+import { CompanyShortName } from "@constants";
 
 export const metadata: Metadata = {
-	title: { template: "%s | Nestora Admin", default: "Nestora Admin" },
+	title: {
+		template: `%s | ${CompanyShortName} Admin`,
+		default: `${CompanyShortName} Admin`,
+	},
 	robots: { index: false, follow: false },
 };
 

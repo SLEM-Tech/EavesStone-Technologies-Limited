@@ -1,3 +1,4 @@
+import { CompanyName, CompanyShortName } from "@constants";
 import { useGeneralSettings } from "@src/components/lib/woocommerce";
 import React from "react";
 
@@ -9,10 +10,9 @@ const RefundPolicy = () => {
 	return (
 		<div className='text-gray-600 space-y-6 text-xs sm:text-sm'>
 			<p>
-				At Nestora Digital Innovations, we strive for 100% accuracy in every
-				order. Since we act as your procurement and logistics partner, our
-				policy is designed to be fair to both you and our international
-				suppliers.
+				At {CompanyName}, we strive for 100% accuracy in every order. Since we
+				act as your procurement and logistics partner, our policy is designed to
+				be fair to both you and our international suppliers.
 			</p>
 
 			<section>
@@ -70,8 +70,8 @@ const RefundPolicy = () => {
 					</li>
 					<li>
 						<strong>Shipping Costs:</strong> If a return is approved because of
-						our error, Nestora Import covers the return shipping. For all other
-						approved returns, the customer bears the cost.
+						our error, {CompanyShortName} Import covers the return shipping. For
+						all other approved returns, the customer bears the cost.
 					</li>
 				</ul>
 			</section>
@@ -81,10 +81,10 @@ const RefundPolicy = () => {
 					4. Missing Items & Supplier Discrepancies
 				</h3>
 				<p>
-					At Nestora Import, we act as your dedicated procurement agent. While
-					we vet suppliers, we do not control their internal packing process. In
-					the rare event that a supplier fails to ship an item or sends an
-					incomplete order, the following policy applies:
+					At {CompanyShortName} Import, we act as your dedicated procurement
+					agent. While we vet suppliers, we do not control their internal
+					packing process. In the rare event that a supplier fails to ship an
+					item or sends an incomplete order, the following policy applies:
 				</p>
 				<ul className='list-disc pl-5 mt-2 space-y-2'>
 					<li>
