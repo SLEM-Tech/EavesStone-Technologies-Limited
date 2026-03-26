@@ -8,6 +8,7 @@ import Link from "next/link";
 import Picture from "../picture/Picture";
 import { FormatMoney2 } from "../Reusables/FormatMoney";
 import { convertToSlug } from "@constants";
+import { FiShoppingBag, FiStar } from "react-icons/fi";
 
 interface ProductCard2Props {
 	id: string | number;
@@ -57,72 +58,87 @@ const ProductCard2 = ({
 					: "border border-gray-100"
 			}`}
 		>
-			{/* Image Container */}
-			<Link
-				href={`/home-item/product/${slugDesc}-${id}`}
-				className='relative aspect-square w-full bg-[#F8F9FA] overflow-hidden flex items-center justify-center rounded-t-2xl'
-			>
-				<Picture
-					src={image}
-					alt={description}
-					className='object-contain w-[85%] h-[85%] transition-transform duration-700 ease-out group-hover:scale-110'
-				/>
-
-				{/* Elegant Discount Badge */}
-				{discount > 0 && (
-					<div className='absolute top-3 right-3 bg-slate-900 text-white text-sm font-black px-2 py-1 rounded-lg shadow-sm z-10'>
-						-{discount}%
-					</div>
-				)}
-			</Link>
-
-			{/* Content Area */}
-			<div className='flex flex-col flex-grow p-4'>
-				{/* Title / Description */}
+			{/* 1. Image Container - Modern "Gallery" look */}
+			<div className='relative p-3 overflow-hidden'>
 				<Link
 					href={`/home-item/product/${slugDesc}-${id}`}
-					className='text-sm font-semibold text-slate-800 line-clamp-2 mb-3 h-10 hover:text-primary-100 transition-colors leading-snug'
+					className='relative aspect-square w-full bg-[#F9FAFB] rounded-[1.5rem] overflow-hidden flex items-center justify-center group/img'
+				>
+					<Picture
+						src={image}
+						alt={description}
+						className='object-contain w-[75%] h-[75%] transition-transform duration-700 ease-out group-hover/img:scale-110'
+					/>
+
+					{/* Minimalist Discount Badge */}
+					{discount > 0 && (
+						<div className='absolute top-4 left-4 bg-primary-100 text-white text-[10px] font-black uppercase tracking-widest px-2.5 py-1 rounded-full shadow-lg'>
+							{discount}% Off
+						</div>
+					)}
+				</Link>
+			</div>
+
+			{/* 2. Content Area */}
+			<div className='flex flex-col flex-grow p-6 pt-2'>
+				{/* Rating & Metadata */}
+				<div className='flex items-center gap-1 mb-2'>
+					{[1, 2, 3, 4].map((i) => (
+						<FiStar
+							key={i}
+							size={10}
+							className='fill-amber-400 text-amber-400'
+						/>
+					))}
+					<span className='text-[10px] font-bold text-slate-400 ml-1'>4.5</span>
+				</div>
+
+				{/* Title */}
+				<Link
+					href={`/home-item/product/${slugDesc}-${id}`}
+					className='text-[13px] lg:text-sm font-bold text-slate-900 line-clamp-2 mb-4 leading-relaxed hover:text-primary-100 transition-colors min-h-[40px]'
 					dangerouslySetInnerHTML={{ __html: description }}
 				/>
 
-				{/* Bottom Row - Pushed to bottom */}
-				<div className='mt-auto flex items-end justify-between gap-2'>
+				{/* 3. Footer Section (Price + Action) */}
+				<div className='mt-auto flex items-center justify-between gap-2'>
 					<div className='flex flex-col'>
 						{oldAmount && (
-							<span className='text-[11px] line-through text-slate-400 font-medium mb-0.5'>
+							<span className='text-[10px] line-through text-slate-300 font-bold tracking-tight'>
 								<FormatMoney2 value={parseInt(oldAmount)} />
 							</span>
 						)}
-						<span className='text-primary-100 font-black text-base sm:text-xl tracking-tight'>
+						<span className='text-slate-900 font-black text-lg tracking-tighter'>
 							{price ? <FormatMoney2 value={price} /> : "N/A"}
 						</span>
 					</div>
 
+					{/* Integrated Action Dock */}
 					{price > 0 && (
-						<div className='flex items-center'>
+						<div className='relative'>
 							{quantity === 0 ? (
 								<button
 									onClick={(e) => {
 										e.preventDefault();
 										addToCart();
 									}}
-									className='flex items-center justify-center rounded-xl bg-primary-100 size-10 text-white hover:bg-slate-900 transition-all duration-300 active:scale-90 shadow-lg shadow-primary-100/20'
-									aria-label='Add to cart'
+									className='flex items-center justify-center rounded-2xl bg-[#F0F2F3] size-11 text-slate-900 hover:bg-primary-100 hover:text-white transition-all duration-300 active:scale-90 group/btn'
 								>
-									<RiShoppingBagFill className='text-xl' />
+									<FiShoppingBag className='text-lg' />
+									<div className='absolute -top-1 -right-1 size-3 bg-primary-100 rounded-full border-2 border-white scale-0 group-hover/btn:scale-100 transition-transform' />
 								</button>
 							) : (
-								<div className='flex items-center gap-2 sm:gap-3 rounded-xl bg-slate-50 p-1 border border-slate-200/60'>
+								<div className='flex items-center gap-2 rounded-2xl bg-slate-900 p-1 shadow-xl animate-in zoom-in-90 duration-300'>
 									<button
 										onClick={(e) => {
 											e.preventDefault();
 											decrease();
 										}}
-										className='size-7 sm:size-8 flex items-center justify-center rounded-lg bg-white text-slate-600 hover:text-red-500 shadow-sm transition-all active:scale-90'
+										className='size-8 flex items-center justify-center rounded-xl bg-white/10 text-white hover:bg-white/20 transition-all active:scale-90'
 									>
-										<AiOutlineMinus size={14} />
+										<AiOutlineMinus size={12} />
 									</button>
-									<span className='text-xs sm:text-sm font-black text-slate-800 min-w-[14px] text-center'>
+									<span className='text-xs font-black text-white min-w-[20px] text-center'>
 										{quantity}
 									</span>
 									<button
@@ -130,9 +146,9 @@ const ProductCard2 = ({
 											e.preventDefault();
 											increase();
 										}}
-										className='size-7 sm:size-8 flex items-center justify-center rounded-lg bg-primary-100 text-white shadow-sm transition-all hover:opacity-90 active:scale-90'
+										className='size-8 flex items-center justify-center rounded-xl bg-primary-100 text-white hover:bg-blue-500 transition-all active:scale-90'
 									>
-										<AiOutlinePlus size={14} />
+										<AiOutlinePlus size={12} />
 									</button>
 								</div>
 							)}
@@ -141,8 +157,8 @@ const ProductCard2 = ({
 				</div>
 			</div>
 
-			{/* Subtle border overlay for premium feel */}
-			<div className='absolute inset-0 rounded-2xl border border-black/[0.03] pointer-events-none' />
+			{/* Subtle bottom border accent that expands on hover */}
+			<div className='absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-1 bg-primary-100 rounded-full group-hover:w-[40%] transition-all duration-500' />
 		</div>
 	);
 };

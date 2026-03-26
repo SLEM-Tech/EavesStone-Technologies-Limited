@@ -137,17 +137,17 @@ const AllCategorySection = () => {
 			<section className='relative w-full bg-white font-poppins pt-24 lg:pt-32 pb-10 overflow-hidden'>
 				<div className='max-w-[1440px] mx-auto px-6 lg:px-12 relative'>
 					{/* 1. Main Hero Card */}
-					<div className='bg-[#F0F2F3] rounded-bl-[80px] rounded-br-[20px] rounded-tl-[20px] rounded-tr-[20px] min-h-[500px] lg:min-h-[700px] flex flex-col lg:flex-row items-center relative overflow-hidden px-8 lg:px-20 py-12 lg:py-0'>
+					<div className='bg-gray-100 rounded-bl-md rounded-br-md rounded-tl-[20px] rounded-tr-[20px] min-h-[500px] lg:min-h-[550px] flex flex-col lg:flex-row items-center relative overflow-hidden px-8 lg:px-20 py-12 lg:py-0'>
 						{/* Decorative Large Circle Background */}
-						<div className='absolute -right-20 -top-20 size-[600px] lg:size-[800px] bg-white/40 rounded-full blur-3xl pointer-events-none' />
-						<div className='absolute right-0 top-1/2 -translate-y-1/2 size-[400px] lg:size-[650px] bg-white rounded-full hidden lg:block' />
+						<div className='absolute -right-20 -top-20 size-[400px] lg:size-[600px] bg-white/40 rounded-full blur-3xl pointer-events-none' />
+						<div className='absolute right-0 top-1/2 -translate-y-1/2 size-[200px] lg:size-[450px] bg-white rounded-full hidden lg:block' />
 
 						{/* Text Content */}
 						<div className='w-full lg:w-1/2 z-10 space-y-6 text-center lg:text-left'>
 							<motion.p
 								initial={{ opacity: 0, y: 10 }}
 								animate={{ opacity: 1, y: 0 }}
-								className='text-[12px] lg:text-sm font-medium uppercase tracking-[0.3em] text-[#272343]'
+								className='text-[12px] lg:text-sm font-medium uppercase tracking-[0.3em] text-price'
 							>
 								Welcome to Quality
 							</motion.p>
@@ -156,7 +156,7 @@ const AllCategorySection = () => {
 								initial={{ opacity: 0, y: 20 }}
 								animate={{ opacity: 1, y: 0 }}
 								transition={{ delay: 0.1 }}
-								className='text-4xl lg:text-[72px] font-black text-[#272343] leading-[1.1] tracking-tight'
+								className='text-4xl lg:text-6xl font-bold text-price leading-[1.1] tracking-tight'
 							>
 								Best Accessories <br className='hidden lg:block' />
 								For Your Computer.
@@ -169,7 +169,7 @@ const AllCategorySection = () => {
 								className='pt-4'
 							>
 								<Link
-									href='/shop'
+									href='/category'
 									className='inline-flex items-center gap-3 bg-primary-100 hover:bg-primary-200 text-white px-8 py-4 rounded-lg font-bold transition-all hover:gap-5 group'
 								>
 									Shop Now
@@ -193,21 +193,6 @@ const AllCategorySection = () => {
 								/>
 							</motion.div>
 						</div>
-					</div>
-
-					{/* 2. Side Navigation Arrows */}
-					<button className='hidden lg:flex absolute left-4 top-1/2 -translate-y-1/2 size-12 rounded-full bg-white border border-gray-100 items-center justify-center text-gray-400 hover:text-primary-100 hover:shadow-lg transition-all z-20'>
-						<FiArrowLeft size={20} />
-					</button>
-					<button className='hidden lg:flex absolute right-4 top-1/2 -translate-y-1/2 size-12 rounded-full bg-white border border-gray-100 items-center justify-center text-gray-400 hover:text-primary-100 hover:shadow-lg transition-all z-20'>
-						<FiArrowRight size={20} />
-					</button>
-
-					{/* 3. Slider Dots */}
-					<div className='flex justify-center gap-2 mt-8'>
-						<div className='size-2.5 rounded-full bg-gray-200' />
-						<div className='size-2.5 rounded-full bg-[#272343]' />
-						<div className='size-2.5 rounded-full bg-gray-200' />
 					</div>
 				</div>
 
@@ -239,9 +224,7 @@ const AllCategorySection = () => {
 							<div key={i} className='flex items-center gap-4 p-8'>
 								<div className='text-3xl text-gray-800'>{item.icon}</div>
 								<div>
-									<h4 className='text-sm font-bold text-[#272343]'>
-										{item.title}
-									</h4>
+									<h4 className='text-sm font-bold text-price'>{item.title}</h4>
 									<p className='text-xs text-gray-400 font-medium'>
 										{item.sub}
 									</p>
@@ -253,28 +236,46 @@ const AllCategorySection = () => {
 			</section>
 			{/* Category Section Styling Idea */}
 			<div className='grid grid-cols-2 lg:grid-cols-5 mx-auto max-w-[1256px] mt-4 gap-6 p-2 lg:p-0'>
-				{Categories?.slice(0, 5).map((cat) => {
+				{Categories?.slice(0, 5).map((cat: any, index: number) => {
 					const productImage: any = categoryProductsMap[cat?.id];
 					return (
-						<Link
+						<motion.div
 							key={cat.id}
-							href={`/category/${convertToSlug(cat.name)}-${cat.id}`}
-							className='group relative h-48 bg-[#111] rounded-2xl overflow-hidden border border-white/5 hover:border-blue-500/50 transition-all'
+							initial={{ opacity: 0, y: 20 }}
+							whileInView={{ opacity: 1, y: 0 }}
+							viewport={{ once: true }}
+							transition={{ delay: index * 0.1 }}
 						>
-							{/* Category Image */}
-							<Picture
-								src={cat.image?.src ?? productImage}
-								alt={cat.image?.name}
-								className='w-full h-full object-contain opacity-60 group-hover:scale-110 transition-transform duration-700'
-							/>
+							<Link
+								href={`/category/${convertToSlug(cat.name)}-${cat.id}`}
+								className='group relative flex flex-col h-[220px] bg-slate-50 rounded-[2.5rem] overflow-hidden border border-slate-100 hover:bg-white hover:shadow-[0_30px_60px_-15px_rgba(0,0,0,0.1)] hover:border-primary-100/20 transition-all duration-500'
+							>
+								{/* Content Area */}
+								<div className='p-8 pb-0 flex flex-col h-full relative z-10'>
+									<h3 className='text-lg font-black text-slate-900 uppercase leading-tight mb-1 group-hover:text-primary-100 transition-colors'>
+										{cat.name}
+									</h3>
+									<span className='text-[10px] font-bold text-slate-400 uppercase tracking-widest'>
+										Shop Now
+									</span>
 
-							{/* Text Label */}
-							<div className='absolute bottom-4 left-4'>
-								<h3 className='text-sm sm:text-lg font-bold text-white uppercase'>
-									{cat.name}
-								</h3>
-							</div>
-						</Link>
+									{/* Floating Image Container */}
+									<div className='mt-auto relative w-full h-[55%] flex items-center justify-center transform group-hover:-translate-y-4 transition-transform duration-700'>
+										{/* Dynamic Shadow behind product */}
+										<div className='absolute bottom-4 left-1/2 -translate-x-1/2 w-2/3 h-4 bg-black/5 rounded-full blur-xl group-hover:scale-110 transition-all duration-700' />
+
+										<Picture
+											src={cat.image?.src ?? productImage}
+											alt={cat.name}
+											className='w-full h-full aspect-auto drop-shadow-2xl'
+										/>
+									</div>
+								</div>
+
+								{/* Bottom Accent Line */}
+								<div className='absolute bottom-0 left-0 w-0 h-1.5 bg-primary-100 group-hover:w-full transition-all duration-500' />
+							</Link>
+						</motion.div>
 					);
 				})}
 			</div>

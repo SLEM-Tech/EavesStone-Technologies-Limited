@@ -48,24 +48,6 @@ const Footer = () => {
 		},
 	];
 
-	const footerCardData = [
-		{
-			icon: <RocketIconSvg />,
-			name: "Delivery Assistance",
-			description: "Seller Online Delivery",
-		},
-		{
-			icon: <FileIconSvg />,
-			name: "Secure Purchase",
-			description: "100% Secure Payment",
-		},
-		{
-			icon: <ChatServiceIconSvg />,
-			name: "Unmatched Service",
-			description: "Dedicated Support",
-		},
-	];
-
 	const footerData: footerDataProps[] = [
 		{
 			title: "Account",
@@ -105,27 +87,6 @@ const Footer = () => {
 
 	return (
 		<footer className='bg-white w-full border-t border-gray-100 font-poppins'>
-			{/* Tier 1: Trust Features Bar */}
-			<div className='w-full bg-[#F9FAFB] py-12 border-b border-gray-100'>
-				<div className='max-w-[1440px] mx-auto px-8 grid grid-cols-1 md:grid-cols-3 gap-8'>
-					{footerCardData.map((item, idx) => (
-						<div key={idx} className='flex items-center gap-6 group'>
-							<div className='size-16 rounded-2xl bg-white shadow-sm flex items-center justify-center transition-transform group-hover:scale-110'>
-								{item.icon}
-							</div>
-							<div>
-								<h4 className='text-sm font-black text-gray-900 uppercase tracking-wider'>
-									{item.name}
-								</h4>
-								<p className='text-xs text-gray-500 font-medium'>
-									{item.description}
-								</p>
-							</div>
-						</div>
-					))}
-				</div>
-			</div>
-
 			{/* Tier 2: Main Navigation Links */}
 			<div className='max-w-[1440px] mx-auto px-8 pt-20 pb-16'>
 				<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8'>

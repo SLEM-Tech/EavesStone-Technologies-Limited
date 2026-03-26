@@ -106,11 +106,11 @@ const Header = () => {
 					{/* 2. Search Bar - Matching reference image color and style */}
 					<div className='col-span-5 px-4'>
 						<div className='relative w-full max-w-[500px] group mx-auto'>
-							<FiSearch className='absolute left-4 top-1/2 -translate-y-1/2 text-brand-blue size-5' />
+							<FiSearch className='absolute left-4 top-1/2 -translate-y-1/2 text-primary-100 size-5' />
 							<input
 								type='text'
 								placeholder='Search essentials, groceries and more...'
-								className='w-full h-11 text-sm text-gray-900 rounded-lg pl-12 pr-5 border border-transparent outline-none bg-gray-50 focus:bg-white focus:border-brand-blue/20 transition-all'
+								className='w-full h-11 text-sm text-gray-900 rounded-lg pl-12 pr-5 border border-transparent outline-none bg-gray-50 focus:bg-white focus:border-primary-100/20 transition-all'
 								onChange={(e) => setSearchValue(e.target.value)}
 								onKeyDown={(e) => e.key === "Enter" && handleSearch()}
 							/>
@@ -146,7 +146,7 @@ const Header = () => {
 											{({ active }) => (
 												<button
 													onClick={() => handleCurrencyChange(c.code)}
-													className={`${active ? "bg-gray-50 text-brand-blue" : "text-gray-600"} flex w-full items-center gap-2 rounded-lg px-3 py-2 text-xs font-medium transition-colors`}
+													className={`${active ? "bg-gray-50 text-primary-100" : "text-gray-600"} flex w-full items-center gap-2 rounded-lg px-3 py-2 text-xs font-medium transition-colors`}
 												>
 													<Flag code={c.countryCode} className='w-4' />
 													{c.code}
@@ -162,8 +162,8 @@ const Header = () => {
 						<div className='flex items-center gap-4'>
 							<Menu as='div' className='relative inline-block text-left'>
 								<Menu.Button className='flex items-center gap-2 group outline-none'>
-									<div className='flex items-center gap-2 text-gray-700 group-hover:text-brand-blue transition'>
-										<FiUser className='size-5 text-brand-blue' />
+									<div className='flex items-center gap-2 text-gray-700 group-hover:text-primary-100 transition'>
+										<FiUser className='size-5 text-primary-100' />
 										<span className='text-sm font-semibold whitespace-nowrap'>
 											{wc_customer_info?.first_name || "Login"}
 										</span>
@@ -187,7 +187,7 @@ const Header = () => {
 														{({ active }) => (
 															<button
 																onClick={() => router.push(item.href!)}
-																className={`${active ? "bg-gray-50 text-brand-blue" : "text-gray-600"} flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-sm transition-colors`}
+																className={`${active ? "bg-gray-50 text-primary-100" : "text-gray-600"} flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-sm transition-colors`}
 															>
 																{item.icon} {item.label}
 															</button>
@@ -215,13 +215,13 @@ const Header = () => {
 
 							{/* Cart Section */}
 							<div
-								className='relative flex items-center gap-2 cursor-pointer group text-gray-700 hover:text-brand-blue transition'
+								className='relative flex items-center gap-2 cursor-pointer group text-gray-700 hover:text-primary-100 transition'
 								onClick={onOpenCart}
 							>
 								<div className='relative'>
-									<FiShoppingCart className='text-xl text-brand-blue transition' />
+									<FiShoppingCart className='text-xl text-primary-100 transition' />
 									{totalItems > 0 && (
-										<span className='absolute -top-2.5 -right-2.5 size-5 bg-brand-blue text-white text-[10px] font-black flex items-center justify-center rounded-full border-2 border-white shadow-sm'>
+										<span className='absolute -top-2.5 -right-2.5 size-5 bg-primary-100 text-white text-[10px] font-black flex items-center justify-center rounded-full border-2 border-white shadow-sm'>
 											{totalItems}
 										</span>
 									)}
@@ -243,9 +243,9 @@ const Header = () => {
 							<LogoImage className='cursor-pointer !w-40 lg:!w-48' />
 						</div>
 						<div onClick={onOpenCart} className='relative'>
-							<FiShoppingBag className='text-2xl text-brand-blue' />
+							<FiShoppingBag className='text-2xl text-primary-100' />
 							{totalItems > 0 && (
-								<span className='absolute -top-2 -right-2 size-4 bg-brand-blue rounded-full text-[9px] flex items-center justify-center text-white'>
+								<span className='absolute -top-2 -right-2 size-4 bg-primary-100 rounded-full text-[9px] flex items-center justify-center text-white'>
 									{totalItems}
 								</span>
 							)}
@@ -255,15 +255,15 @@ const Header = () => {
 						<input
 							type='text'
 							placeholder='Search essentials...'
-							className='w-full h-full text-sm bg-gray-50 rounded-lg px-4 border border-gray-100 outline-none focus:border-brand-blue/30'
+							className='w-full h-full text-sm bg-gray-50 rounded-lg px-4 border border-gray-100 outline-none focus:border-primary-100/30'
 							value={searchValue}
 							onChange={(e) => setSearchValue(e.target.value)}
 							onKeyDown={(e) => e.key === "Enter" && handleSearch()}
 						/>
 						{isPending ? (
-							<ImSpinner2 className='absolute right-3 top-1/4 text-brand-blue animate-spin' />
+							<ImSpinner2 className='absolute right-3 top-1/4 text-primary-100 animate-spin' />
 						) : (
-							<FiSearch className='absolute right-3 top-1/2 -translate-y-1/2 text-brand-blue' />
+							<FiSearch className='absolute right-3 top-1/2 -translate-y-1/2 text-primary-100' />
 						)}
 					</div>
 				</div>

@@ -1,6 +1,8 @@
 "use client";
 import { CompanyName } from "@constants";
+import { FiChevronDown } from "@node_modules/react-icons/fi";
 import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import * as Icons1 from "react-icons/sl";
 
 interface FaqAccordionItemProps {
@@ -20,35 +22,57 @@ const FaqAccordionItem: React.FC<FaqAccordionItemProps> = ({
 	};
 
 	return (
-		<div className='text-[#263646] bg-[#fff] shadow-md transition'>
-			<div
-				className='flex justify-between items-center shadow-sm py-5 px-4 sm:px-8 text-xs xs:text-sm sm:text-base font-[500] cursor-pointer'
-				onClick={handleAccordionToggle}
+		<div
+			className={`group w-full rounded-[1.5rem] transition-all duration-500 font-poppins mb-4 border ${
+				isExpanded
+					? "bg-white border-primary-100/20 shadow-[0_20px_50px_rgba(0,0,0,0.05)]"
+					: "bg-slate-50 border-transparent hover:border-slate-200"
+			}`}
+		>
+			{/* Header Trigger */}
+			<button
+				className='w-full flex justify-between items-center py-6 px-6 sm:px-10 outline-none'
+				onClick={() => setIsExpanded(!isExpanded)}
 			>
-				<span className='text-left'>{title}</span>
-				<div
-					style={{ transform: isExpanded ? "rotate(180deg)" : "rotate(0)" }}
-					className='transition'
+				<span
+					className={`text-left text-sm sm:text-base font-bold transition-colors duration-300 ${
+						isExpanded ? "text-primary-100" : "text-slate-900"
+					}`}
 				>
-					{isExpanded ? (
-						<Icons1.SlArrowUp className='text-sm sm:text-xl transition' />
-					) : (
-						<Icons1.SlArrowRight className='text-sm sm:text-xl transition' />
-					)}
+					{title}
+				</span>
+
+				<div
+					className={`transition-all duration-500 flex items-center justify-center size-8 rounded-full ${
+						isExpanded
+							? "bg-primary-100 text-white rotate-180"
+							: "bg-slate-200 text-slate-500 group-hover:bg-slate-300"
+					}`}
+				>
+					<FiChevronDown className='text-lg' />
 				</div>
-			</div>
-			<div
-				className='px-4 sm:px-8 text-sm sm:text-base text-start'
-				style={{
-					paddingTop: isExpanded ? "10px" : "0",
-					height: isExpanded ? "8rem" : 0,
-					opacity: isExpanded ? 1 : 0,
-					transition: "height 0.3s, opacity 0.3s",
-					overflow: "hidden",
-				}}
-			>
-				{description}
-			</div>
+			</button>
+
+			{/* Animated Content */}
+			<AnimatePresence initial={false}>
+				{isExpanded && (
+					<motion.div
+						key='content'
+						initial={{ height: 0, opacity: 0 }}
+						animate={{ height: "auto", opacity: 1 }}
+						exit={{ height: 0, opacity: 0 }}
+						transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+						className='overflow-hidden'
+					>
+						<div className='px-6 sm:px-10 pb-8'>
+							<div className='h-px w-full bg-slate-100 mb-6' />
+							<p className='text-sm sm:text-base text-slate-500 leading-relaxed font-medium'>
+								{description}
+							</p>
+						</div>
+					</motion.div>
+				)}
+			</AnimatePresence>
 		</div>
 	);
 };
